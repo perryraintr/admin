@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="coupon">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="coupon.css" />
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<a href="order_add.html">add</a>
+	<table border="1">
+	<tbody ng-repeat="row in json track by $index">
+	<tr>
+		<td>op</td>
+		<td>guid</td>
+		<td>current</td>
+		<td>count</td>
+		<td>amount</td>
+		<td>expire_time</td>
+		<td>create_time</td>
+		<td>modify_time</td>
+		<td>op</td>
+	</tr>
+	<tr>
+		<td><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td>{{row.guid}}</td>
+		<td>{{row.current}}</td>
+		<td>{{row.count}}</td>
+		<td>{{row.amount}}</td>
+		<td>{{row.expire_time}}</td>
+		<td>{{row.create_time}}</td>
+		<td>{{row.modify_time}}</td>
+		<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>
+	</tr>
+	</tbody>
+	</table>
+	
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<a href="order_add.html">add</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "coupon.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "coupon.html?page=1";
+		else
+			$("pageUp1").href= "coupon.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "coupon.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "coupon.html?page=1";
+		else
+			$("pageUp2").href= "coupon.html?page=" + (page - 1);		
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="coupon.js"></script>
+</html>

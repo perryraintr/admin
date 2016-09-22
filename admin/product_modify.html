@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="product_modify">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.qrcode.min.js" ></script>
+</head>
+<body>
+	<form id="form_modify" method="post" enctype="multipart/form-data">
+		<table>
+		<tbody>
+			<tr style="display: none;"><td>id</td><td><textarea id="id" name="id" rows="1" cols="80">{{product.product_guid}}</textarea></td></tr>
+			<tr><td>name</td><td><textarea id="name" name="name" rows="5" cols="80">{{product.product_name}}</textarea></td></tr>
+			<tr><td>favorite</td><td><textarea id="favorite" name="favorite" rows="1" cols="80">{{product.product_favorite}}</textarea></td></tr>
+			<tr>
+				<td>image<br/><input type="button" value="add" onclick="AddImage();"/><input type="button" value="remove" onclick="RemoveImage();"/></td>
+				<td id="images"><p ng-repeat="row in product.product_images"><img ng-src="{{row}}" width="100px" height="100px" /><input type="file" id="file" name="file" onchange="GetImage(this);"/></p></td>
+			</tr>
+			<tr><td>price</td><td><textarea id="price" name="price" rows="1" cols="80">{{product.product_price}}</textarea></td></tr>
+			<tr><td>address</td><td><textarea id="address" name="address" rows="5" cols="80">{{product.product_address}}</textarea></td></tr>
+			<tr><td>brand</td><td><textarea id="brand" name="brand" rows="5" cols="80">{{product.product_brand}}</textarea></td></tr>
+			<tr><td>description</td><td><textarea id="description" name="description" rows="5" cols="80">{{product.product_description}}</textarea></td></tr>
+			<tr><td><input type="submit" value="modify" ng-click="modify()" /></td><td><input type="hidden" id="method" name="method"/>{{json.message}}&nbsp;&nbsp;&nbsp;{{json.url}}</td></tr>
+		</tbody>
+		</table>
+	</form>
+	<div id="qrcode" name="qrcode"></div>
+	<script type="text/javascript">
+		function GetImage(_this){
+    		_this.previousSibling.src = window.URL.createObjectURL(_this.files[0]);
+  	  	}
+    	
+ 	   	function AddImage(){
+  	  		var p = document.createElement("p");
+			p.innerHTML = "<img width=\"100px\" height=\"100px\" /><input type=\"file\" id=\"file\" name=\"file\" onchange=\"GetImage(this);\"/>";
+   	 		document.getElementById("images").appendChild(p);
+   	 	}
+    	
+  	  	function RemoveImage(){
+    			var images = document.getElementById("images");
+    			var p = images.getElementsByTagName("p");
+    			if(p.length > 1)
+    				images.removeChild(p[p.length - 1]);
+    			else
+    				alert("Value cannot be null");
+	    	}
+
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="product_modify.js"></script>
+</html>

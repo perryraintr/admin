@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="commodity">
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="js/helper.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+	</head>
+
+	<body>
+		<a id="pageUp1">page up</a>
+		<a id="pageDown1">page down</a>
+		<a style="display: none;" href="commodity_add.html">add</a>
+		<input type="button" value="同步有赞数据" ng-click="syncClicked()" />{{sync}}
+		<table border="1">
+			<tbody ng-repeat="row in json track by $index">
+				<tr>
+					<td>二维码</td>
+					<td>guid</td>
+					<td>烘焙商</td>
+					<td>产地品种介绍</td>
+					<td>等级0<br/>
+						<font size="2">(1:品社X系列 2:至臻精选 3:名庄限量)</font>
+					</td>
+					<td>限时分组1<br/>
+						<font size="2">(1:bestseller 2:import 3:new 4:importnew 5:bestnew)</font>
+					</td>
+					<td>标签2<br/>
+						<font size="2">(1:老饕必品 2:顶级庄园限量 3:限量烘焙 4:季节限定 5:全球尖货 6:青春系列 7:纯手工研磨)</font>
+					</td>
+					<td>星级3<br/>
+						<font size="2">(1:star1 2:star2 3:star3 7:star7)</font>
+					</td>
+					<td>烘培4<br/>
+						<font size="2">(1:shallow 2:shallowmiddle 3:middle 4:deepmiddle 5:deep)</font>
+					</td>
+					<td>规格5<br/>
+						<font size="2">(1:80g 2:100g 3:150g 4:170g 5:200g 6:227g 7:115gx2 8:250g 9:450g 10:10包 11:20包 12:300mlx6)</font>
+					</td>
+					<td><div style="width: 150px;">店长推荐</div></td>
+					<td>上架状态(0:上架, 1:下架)</td>
+					<td style="background-color:yellowgreen;">排序(越大越靠前)</td>
+					<td style="background-color:yellowgreen;">库存</td>
+					<td style="background-color:yellowgreen;">品社价</td>
+					<td style="background-color:yellowgreen;">进价</td>
+					<td style="background-color:yellowgreen;">链接</td>
+					<td style="background-color:yellowgreen;">备注</td>
+					<td>创建时间</td>
+					<td>修改时间</td>
+					<td>op</td>
+				</tr>
+				<tr>
+					<td><img ng-src="{{row.qrcodeUrl}}" width="100px" height="100px" /><input value="生成二维码" type="button" ng-click="qrcode(row)"/></td>
+					<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="description{{$index}}" name="description{{$index}}" rows="10" cols="20">{{row.description}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t0{{$index}}" name="t0{{$index}}" rows="10" cols="20">{{row.t0}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t1{{$index}}" name="t1{{$index}}" rows="10" cols="20">{{row.t1}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t2{{$index}}" name="t2{{$index}}" rows="10" cols="20">{{row.t2}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t3{{$index}}" name="t3{{$index}}" rows="10" cols="20">{{row.t3}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t4{{$index}}" name="t4{{$index}}" rows="10" cols="20">{{row.t4}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="t5{{$index}}" name="t5{{$index}}" rows="10" cols="20">{{row.t5}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td>
+						<a href="commodity_store.html?id={{row.guid}}">跳转编辑</a>
+						<p ng-repeat="list in row.recommends track by $index">
+							<select id="selectedId{{$index}}">
+								<option ng-repeat="store in storeList"  ng-selected="list.store_guid == store.guid" value="{{store.guid}}" id="{{store.guid}}">{{store.name}}</option>
+							</select>
+						</p>
+					</td>
+					<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="20">{{row.status}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="rank{{$index}}" name="rank{{$index}}" rows="10" cols="20">{{row.rank}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="count{{$index}}" name="count{{$index}}" rows="10" cols="20">{{row.count}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="price{{$index}}" name="price{{$index}}" rows="10" cols="20">{{row.price}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="cost{{$index}}" name="cost{{$index}}" rows="10" cols="20">{{row.cost}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="url{{$index}}" name="url{{$index}}" rows="10" cols="20">{{row.url}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td><textarea id="memo{{$index}}" name="memo{{$index}}" rows="10" cols="20">{{row.memo}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+					<td>{{row.create_time}}</td>
+					<td>{{row.modify_time}}</td>
+					<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a id="pageUp2">page up</a>
+		<a id="pageDown2">page down</a>
+		<a style="display: none;" href="commodity_add.html">add</a>
+		<script type="text/javascript">
+			var page = GetQueryInt("page");
+			if(page == 0)
+				page = 1;
+			$("pageDown1").href = "commodity.html?page=" + (page + 1);
+			if(page - 1 <= 0)
+				$("pageUp1").href = "commodity.html?page=1";
+			else
+				$("pageUp1").href = "commodity.html?page=" + (page - 1);
+
+			$("pageDown2").href = "commodity.html?page=" + (page + 1);
+			if(page - 1 <= 0)
+				$("pageUp2").href = "commodity.html?page=1";
+			else
+				$("pageUp2").href = "commodity.html?page=" + (page - 1);
+		</script>
+	</body>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="commodity.js"></script>
+	<link rel="stylesheet" href="commodity.css" />
+
+</html>

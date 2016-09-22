@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="vote">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<a href="vote_add.html" target="_blank">add</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>op</td>
+		<td>id</td>
+		<td>user_id</td>
+		<td>name</td>
+		<td>post_id_a</td>
+		<td>post_id_b</td>
+		<td>product_id_a</td>
+		<td>product_id_b</td>
+		<td>count_a</td>
+		<td>count_b</td>
+		<td>view</td>
+		<td>comment</td>
+		<td>description</td>
+		<td>create_time</td>
+		<td>modify_time</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>
+			<a href="vote_add.html" target="_blank">add</a>
+			<a href="vote_modify.html?id={{row.vote_guid}}" target="_blank">modify</a>
+		</td>
+		<td>{{row.vote_guid}}</td>
+		<td>{{row.vote_user_id}}</td>
+		<td>{{row.vote_name}}</td>
+		<td><img ng-src="{{row.posta_image}}" width="100" height="100"/></td>
+		<td><img ng-src="{{row.postb_image}}" width="100" height="100"/></td>
+		<td><img ng-src="{{row.producta_image}}" width="100" height="100"/></td>
+		<td><img ng-src="{{row.productb_image}}" width="100" height="100"/></td>
+		<td>{{row.vote_count_a}}</td>
+		<td>{{row.vote_count_b}}</td>
+		<td>{{row.vote_view}}</td>
+		<td>{{row.vote_comment}}</td>
+		<td>{{row.vote_description}}</td>
+		<td>{{row.vote_create_time}}</td>
+		<td>{{row.vote_modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<a href="vote_add.html" target="_blank">add</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "vote.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "vote.html?page=1";
+		else
+			$("pageUp1").href= "vote.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "vote.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "vote.html?page=1";
+		else
+			$("pageUp2").href= "vote.html?page=" + (page - 1);	
+	</script>
+</body>
+	<script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="vote.js"></script>
+</html>

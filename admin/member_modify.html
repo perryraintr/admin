@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="tag_modify">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="js/helper.js"></script>
+		<script type="text/javascript" src="js/angular.min.js" ></script>
+	</head>
+	<body>
+		<form id="form_modify"  method="post" enctype="multipart/form-data">
+			<table>
+			<tbody>
+				<tr style="display: none;"><td>guid</td><td><textarea id="id" name="id" rows="1" cols="80">{{tag.guid}}</textarea></td></tr>
+				<tr><td>name</td><td><textarea id="name" name="name" rows="5" cols="80">{{tag.name}}</textarea></td></tr>
+				<tr><td>current</td><td><textarea id="current" name="current" rows="5" cols="80">{{tag.current}}</textarea></td></tr>
+				<tr><td>amount</td><td><textarea id="amount" name="amount" rows="5" cols="80">{{tag.amount}}</textarea></td></tr>
+				<tr><td><input type="submit" value="modify" ng-click="modify()" /></td><td>{{json.guid}}</td></tr>
+			</tbody>
+			</table>
+		</form>
+	</body>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="member_modify.js"></script>
+
+</html>

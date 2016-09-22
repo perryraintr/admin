@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="post_product">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+</head>
+<body>
+	<form id="form_modify" method="post" enctype="multipart/form-data">
+		pid <input type="text" maxlength="50" id="productid" name="productid" value="{{productid}}"/> <br/>
+		<input type="hidden" id="postid" name="postid" value="{{postid}}"/>
+		<input type="submit" value="modify" ng-click="modify()" />{{json.message}}
+	</form>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="post_product.js"></script>
+</html>

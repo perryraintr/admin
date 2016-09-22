@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<a href="store_add.html" target="_blank">add</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td><div style="width: 100px;">op</div></td>
+		<td>guid</td>
+		<td>二维码</td>
+		<td>member_guid</td>
+		<td>name</td>
+		<td>phone</td>
+		<td><div style="width: 120px;">address</div></td>
+		<td>longitude</td>
+		<td>latitude</td>
+		<td>image主图</td>
+		<td>avatar店长头像</td>
+		<td><div style="width: 150px;">店长推荐</div></td>
+		<td>video</td>
+		<td>date</td>
+		<td>owner</td>
+		<td>slogan</td>
+		<td>recommend</td>
+		<td>feature1</td>
+		<td>feature2</td>
+		<td>feature3
+			<br />
+			例：长吧台(长吧台，胡同院落，两层 宽敞，胡同房子)
+		</td>
+		<td>star</td>
+		<td>activity</td>
+		<td>comment</td>
+		<td><div style="width: 800px;">description</div> </td>
+		<td>create_time</td>
+		<td>modify_time</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>
+			<a href="store_cash.html?sid={{row.guid}}" target="_blank">商家提现记录</a>
+			<br />
+			<a href="store_order.html?sid={{row.guid}}" target="_blank">商家订单列表</a>
+			<br />
+			<a href="store_add.html" target="_blank">add</a>
+			<br />
+			<a href="store_modify.html?id={{row.guid}}" target="_blank">modifyImage</a>
+		</td>
+		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><img ng-src="{{row.qrcodeUrl}}" width="100px" height="100px" /><input value="生成二维码" type="button" ng-click="qrcode(row)"/></td>
+		<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.member_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="phone{{$index}}" name="phone{{$index}}" rows="10" cols="20">{{row.phone}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="address{{$index}}" name="address{{$index}}" rows="10" cols="20">{{row.address}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="longitude{{$index}}" name="longitude{{$index}}" rows="10" cols="20">{{row.longitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="latitude{{$index}}" name="latitude{{$index}}" rows="10" cols="20">{{row.latitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><img ng-src="{{row.image}}" width="100" height="100" /></td>
+		<td><img ng-src="{{row.avatar}}" width="100" height="100" /></td>
+		<td>
+			<a href="store_commodity.html?id={{row.guid}}">跳转编辑</a>
+			<p ng-repeat="list in row.recommends track by $index">
+				<select id="selectedId{{$index}}">
+					<option ng-repeat="commodity in commodityList"  ng-selected="list.commodity_guid == commodity.guid" value="{{commodity.guid}}" id="{{commodity.guid}}">{{commodity.name}} | {{commodity.description}}</option>
+				</select>
+			</p>
+		</td>
+		<td>{{row.video}}</td>
+		<td><textarea id="date{{$index}}" name="date{{$index}}" rows="10" cols="20">{{row.date}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="owner{{$index}}" name="owner{{$index}}" rows="10" cols="20">{{row.owner}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="recommend{{$index}}" name="recommend{{$index}}" rows="10" cols="20">{{row.recommend}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><div>填写例：1,2 (1:适合学习,2:无线网络,3:自制甜点,4:美酒佳酿,5:咖啡课程,6:内有萌宠,7:有书阅读,8:自烘咖啡,9:有停车位,10:欢迎宠物,11:适合商谈,12:值得拍照)</div><textarea id="feature1{{$index}}" name="feature1{{$index}}" rows="10" cols="100">{{row.feature1}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><div>填写例：1,2 (1:V60,2:爱乐亚,3:摩卡壶,4:冰滴壶,5:chemex,6:法压壶,7:虹吸壶,8:意式)</div><textarea id="feature2{{$index}}" name="feature2{{$index}}" rows="10" cols="30">{{row.feature2}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="feature3{{$index}}" name="feature3{{$index}}" rows="10" cols="20">{{row.feature3}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="star{{$index}}" name="star{{$index}}" rows="10" cols="20">{{row.star}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="activity{{$index}}" name="activity{{$index}}" rows="10" cols="20">{{row.activity}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="comment{{$index}}" name="comment{{$index}}" rows="10" cols="20">{{row.comment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="description{{$index}}" name="description{{$index}}" rows="10" cols="800">{{row.description}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td>{{row.create_time}}</td>
+		<td>{{row.modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<a href="store_add.html" target="_blank">add</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "store.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "store.html?page=1";
+		else
+			$("pageUp1").href= "store.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "store.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "store.html?page=1";
+		else
+			$("pageUp2").href= "store.html?page=" + (page - 1);	
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store.js"></script>
+</html>

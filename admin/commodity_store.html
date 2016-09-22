@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="commodity_store">
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="js/helper.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+
+	<body>		
+		咖啡id：{{commodity.guid}}
+		<br />
+		咖啡名称：{{commodity.name}} | {{commodity.description}}
+		<br />
+		<input type="button" value="add" ng-click="AddRecommend($index)" />
+		<table border="1">
+			<tbody ng-repeat="list in commodity.recommends track by $index">
+				<tr>
+					<td>op</td>
+					<td>seleted</td>
+					<td>推荐描述</td>
+					<td>op</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value="modify" ng-click="modifyRecommend(list, $index)" />
+						<input type="button" value="save" ng-click="saveRecommend(list, $index)" />
+					</td>
+					<td>
+						<select id="selectedId{{$index}}">
+							<option ng-repeat="store in storeList" ng-selected="list.store_guid == store.guid" value="{{store.guid}}" id="{{store.guid}}">{{store.name}}</option>
+						</select>
+					</td>
+					<td><textarea id="m{{$index}}" name="m{{$index}}" rows="10" cols="20">{{list.message}}</textarea></td>
+					<td><input type="button" value="remove" ng-click="RemoveRecommend(list, $index)" /></td>
+				</tr>
+			</tbody>	
+		</table>
+		
+	</body>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="commodity_store.js"></script>
+
+</html>

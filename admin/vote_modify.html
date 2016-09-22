@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="vote_modify">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+</head>
+<body>
+	<form id="form_modify" method="post" enctype="multipart/form-data">
+		<table>
+		<tbody>
+			<tr style="display: none;"><td>id</td><td><textarea id="id" name="id" rows="1" cols="80">{{vote.vote_guid}}</textarea></td></tr>
+			<tr><td>name</td><td><textarea id="name" name="name" rows="5" cols="80">{{vote.vote_name}}</textarea></td></tr>
+			<tr><td colspan="2">----------------------------------------------------------------------------------------------------------------</td></tr>
+			<tr><td>user:</td><td></td></tr>
+			<tr><td>uid</td><td><textarea id="uid" name="uid" rows="1" cols="80">{{vote.vote_user_id}}</textarea></td></tr>
+			<tr><td>imagea</td><td><img id="productImageA" ng-src="{{vote.posta_image}}" width="100" height="100" /><input type="file" id="file" name="file" onchange="GetImageA(this);"/></td></tr>
+			<tr><td>imageb</td><td><img id="productImageB" ng-src="{{vote.postb_image}}" width="100" height="100" /><input type="file" id="file" name="file" onchange="GetImageB(this);"/></td></tr>
+			<tr><td colspan="2">----------------------------------------------------------------------------------------------------------------</td></tr>
+			<tr><td>editor:</td><td>uid must be zero if you wanna fill with it below</td></tr>
+			<tr><td>postida</td><td><textarea id="postida" name="postida" rows="1" cols="80">{{vote.posta_guid}}</textarea></td></tr>
+			<tr><td>postidb</td><td><textarea id="postidb" name="postidb" rows="1" cols="80">{{vote.postb_guid}}</textarea></td></tr>
+			<tr><td>productida</td><td><textarea id="productida" name="productida" rows="1" cols="80">{{vote.producta_guid}}</textarea></td></tr>
+			<tr><td>productidb</td><td><textarea id="productidb" name="productidb" rows="1" cols="80">{{vote.productb_guid}}</textarea></td></tr>
+			<tr><td><input type="submit" value="modify" ng-click="modify()" /></td><td>{{json.message}}</td></tr>
+		</tbody>
+		</table>
+	</form>
+	<script type="text/javascript">
+    	function GetImageA(_this){
+    		$('productImageA').src = window.URL.createObjectURL(_this.files[0]);
+    	}
+    	function GetImageB(_this){
+    		$('productImageB').src = window.URL.createObjectURL(_this.files[0]);
+    	}
+    </script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="vote_modify.js"></script>
+</html>

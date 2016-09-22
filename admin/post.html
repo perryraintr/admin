@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="post">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<a href="post_add.html" target="_blank">add</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>op</td>
+		<td>id</td>
+		<td>t1</td>
+		<td>t2</td>
+		<td>user_id</td>
+		<td>product_id</td>
+		<td>name</td>
+		<td>view</td>
+		<td>comment</td>
+		<td>favorite</td>
+		<td>image</td>
+		<td>price</td>
+		<td>address</td>
+		<td>brand</td>
+		<td>description</td>
+		<td>create_time</td>
+		<td>modify_time</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>
+			<a href="post_add.html" target="_blank">add</a>
+			<a href="post_modify.html?id={{row.post_guid}}" target="_blank">modify</a>
+			<a href="post_product.html?productid={{row.product_guid}}&postid={{row.post_guid}}" target="_blank">product</a>
+		</td>
+		<td>{{row.post_guid}}</td>
+		<td>{{row.tag_t1_id}}</td>
+		<td>{{row.tag_t2}}</td>
+		<td>{{row.user_guid}}</td>
+		<td>{{row.product_guid}}</td>
+		<td>{{row.post_name}}</td>
+		<td>{{row.post_view}}</td>
+		<td>{{row.post_comment}}</td>
+		<td>{{row.post_favorite}}</td>
+		<td><img ng-src="{{row.post_image}}" width="100" height="100" /></td>
+		<td>{{row.post_price}}</td>
+		<td>{{row.post_address}}</td>
+		<td>{{row.post_brand}}</td>
+		<td>{{row.post_description}}</td>
+		<td>{{row.post_create_time}}</td>
+		<td>{{row.post_modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<a href="post_add.html" target="_blank">add</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "post.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "post.html?page=1";
+		else
+			$("pageUp1").href= "post.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "post.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "post.html?page=1";
+		else
+			$("pageUp2").href= "post.html?page=" + (page - 1);	
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="post.js"></script>
+</html>

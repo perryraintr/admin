@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  ng-app="admin" ng-controller="ad">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>body{margin:0;padding:0;border:0;font-size:12px;}</style>
+    <script type="text/javascript" src='js/tinymce/tinymce.min.js'></script>
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+  </head>
+  <body>
+  	<form id="form_add" method="post" enctype="multipart/form-data">
+  	<table>
+  	<tbody>
+  	<tr>
+	  	<td valign="top"><iframe src="image.html" width="400px" height="300px" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
+	  	<td valign="top"><textarea id="article"></textarea></td>
+	  	<td valign="top">
+	  		<table>
+		  		<tr><td>type</td><td><input type="text" maxlength="50" id="type" name="type" value="1"/>1 白领居家 2 办公室小确幸  3 人在旅途  4 生命在于运动</td></tr>
+		  		<tr><td>name</td><td><input type="text" maxlength="50" id="name" name="name" value=""/></td></tr>
+		  		<tr><td>image</td><td><input type="file" id="file" name="file" onchange="GetImage(this);"/><img id="productImage" width="100px" height="100px"/></td></tr>
+		  		<tr><td><input type="submit" value="add" onclick="OnClicked(this)" /></td><td>{{json.message}}</td></tr>
+		  		<tr><td><input type="hidden" id="method" name="method"/></td><td><input type="hidden" id="content" name="content"/></td></tr>
+	  		</table>
+	  	</td>
+  	</tr>
+  	</tbody>
+  	</table>
+  	</form>
+  	<script type="text/javascript">
+		tinymce.init({
+			convert_urls : false,
+			relative_urls: false,
+			remove_script_host: false,
+		    selector: 'textarea',
+		    height: '440px',
+		    width:'414px',
+		    plugins: [
+		        'advlist autolink lists link image charmap print preview anchor',
+		        'searchreplace visualblocks code fullscreen',
+		        'insertdatetime media table contextmenu paste code'
+		    ],
+		    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+		});
+		
+		function GetImage(_this){
+    		$('productImage').src = window.URL.createObjectURL(_this.files[0]);
+  	  	};
+    		function OnClicked(_this) {
+    			$('method').value = 1;
+    			$('content').value = tinyMCE.get('article').getContent();
+    			angular.element(_this).scope().add();
+    		}
+    </script>
+  </body>
+  <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="ad.js"></script>
+</html>

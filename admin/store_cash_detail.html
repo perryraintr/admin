@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_cash">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="store_cash_detail.css" />
+</head>
+<body>
+	
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>guid</td>
+		<td>订单金额</td>
+		<td>订单type</td>
+		<td>member_guid</td>
+		<td>member_name</td>
+		<td>member_phone</td>
+		<td>member_wechat_id</td>
+		<td>发送信息</td>
+		<td style="background-color:yellowgreen;">
+			<span>提现状态(0:提现中 1:提现完成)</span>
+		</td>
+		<td>创建时间</td>
+		<td>修改时间</td>
+	</tr>
+	<tr>
+		<td>{{row.guid}}</td>
+		<td>{{row.amount}}</td>
+		<td>{{row.type}}</td>
+		<td>{{row.member_guid}}</td>
+		<td>{{row.member_name}}</td>
+		<td>{{row.member_phone}}</td>
+		<td>{{row.member_wechat_id}}</td>
+		<td>
+			<textarea id="message" name="message" rows="10" cols="20">您的提现订单已处理，预计24小时之内到账，注意查收。</textarea>
+			<input type="button" value="sendMessage" ng-click="sendMessage();" />
+		</td>
+		<td>
+			<textarea id="status" name="status" rows="10" cols="40">{{row.status}}</textarea>
+			<input type="button" value="modify" ng-click="modify();" />
+		</td>
+		<td>{{row.create_time}}</td>
+		<td>{{row.modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_cash_detail.js"></script>
+</html>

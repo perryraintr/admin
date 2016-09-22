@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_activity_detail">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>order_guid</td>
+		<td>订单编号</td>
+		<td>实付金额</td>
+		<td>订单总金额</td>
+		<td>订单支付方式（1：会员 2:微信）</td>
+		<td>订单状态（0: 未支付，1: 已支付）</td>
+		<td>create_time</td>
+		<td>modify_time</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>{{row.order_guid}}</td>
+		<td>{{row.order_order_no}}</td>
+		<td>{{row.order_current}}</td>
+		<td>{{row.order_amount}}</td>
+		<td>{{row.order_type}}</td>
+		<td>{{row.order_status}}</td>
+		<td>{{row.order_create_time}}</td>
+		<td>{{row.order_modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "store_activity_detail.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "store_activity_detail.html?page=1";
+		else
+			$("pageUp1").href= "store_activity_detail.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "store_activity_detail.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "store_activity_detail.html?page=1";
+		else
+			$("pageUp2").href= "store_activity_detail.html?page=" + (page - 1);	
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_activity_detail.js"></script>
+</html>

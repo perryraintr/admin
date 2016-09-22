@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="image">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<form id="form_add" method="post" enctype="multipart/form-data">
+		<table>
+			<tr><td><input type="file" id="file" name="file" onchange="GetImage(this);"/></td></tr>
+			<tr><td><input type="submit" value="add" ng-click="add()" /></td></tr>
+			<tr><td><input type="text" value="{{json.message}}" style="width:300px;"/></td></tr>
+			<tr><td><img id="image" width="100px" height="100px" /></td></tr>
+			<tr><td><input type="hidden" id="method" name="method"/></td></tr>
+		</table>
+	</form>
+	<script type="text/javascript">
+    		function GetImage(_this){
+    			$('image').src = window.URL.createObjectURL(_this.files[0]);
+    		}
+    </script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="image.js"></script>
+</html>

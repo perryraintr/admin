@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_order">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="store_order.css" />
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<table border="1">
+	<tbody ng-repeat="row in json track by $index">
+	<tr>
+		<!--<td>op</td>-->
+		<td>guid</td>
+		<td>订单号</td>
+		<td>商品数量</td>
+		<td>订单金额</td>
+		<td>实付金额</td>
+		<td>用户id</td>
+		<td>用户微信名称</td>
+		<td>用户微信wcid</td>
+		<td><div style="width: 130px;">咖啡馆</div></td>
+		<td>订单状态(0:未付款 1:已付款 2:已发货 3:完成 4:用户取消)</td>
+		<td>创建时间</td>
+		<td>修改时间</td>
+		<!--<td>op</td>-->
+	</tr>
+	<tr>
+		<!--<td><input type="button" value="modify" ng-click="modify($index);" /></td>-->
+		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea></td>
+		<td><textarea id="orderno{{$index}}" name="orderno{{$index}}" rows="10" cols="20" readonly="readonly">{{row.order_no}}</textarea></td>
+		<td><textarea id="count{{$index}}" name="count{{$index}}" rows="10" cols="20" readonly="readonly">{{row.count}}</textarea></td>
+		<td><textarea id="amount{{$index}}" name="amount{{$index}}" rows="10" cols="20" readonly="readonly">{{row.amount}}</textarea></td>
+		<td><textarea id="current{{$index}}" name="current{{$index}}" rows="10" cols="20" readonly="readonly">{{row.current}}</textarea></td>
+		<td>{{row.member_guid}}</td>
+		<td>{{row.member_name}}</td>
+		<td>{{row.member_wechat_id}}</td>
+		<td>{{row.details[0].store_name}}</td>
+		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="20">{{row.status}}</textarea></td>
+		<td>{{row.create_time}}</td>
+		<td>{{row.modify_time}}</td>
+		<!--<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>-->
+	</tr>
+	</tbody>
+	</table>
+	
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "store_order.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "store_order.html?page=1";
+		else
+			$("pageUp1").href= "store_order.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "store_order.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "store_order.html?page=1";
+		else
+			$("pageUp2").href= "store_order.html?page=" + (page - 1);		
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_order.js"></script>
+</html>

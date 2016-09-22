@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_activity">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a id="pageUp1">page up</a>
+	<a id="pageDown1">page down</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>op</td>
+		<td>guid</td>
+		<td>member_guid</td>
+		<td>member_name</td>
+		<td>参加活动次数</td>
+		<td>是否是大咖（1:是，0:不是）</td>
+		<td>活动期间所得到的钱</td>
+		<td>推荐人guid</td>
+		<td>推荐人name</td>
+		<td>create_time</td>
+		<td>modify_time</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>
+			<a href="store_activity_detail.html?aid={{row.guid}}" target="_blank">咖啡订单列表</a>
+		</td>
+		<td>{{row.guid}}</td>
+		<td>{{row.member_guid}}</td>
+		<td>{{row.member_name}}</td>
+		<td>{{row.count}}</td>
+		<td>{{row.is3}}</td>
+		<td>{{row.amount}}</td>
+		<td>{{row.sharer_guid}}</td>
+		<td>{{row.sharer_name}}</td>
+		<td>{{row.create_time}}</td>
+		<td>{{row.modify_time}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a id="pageUp2">page up</a>
+	<a id="pageDown2">page down</a>
+	<script type="text/javascript">
+		var page = GetQueryInt("page");
+		if(page == 0)
+			page = 1;
+		$("pageDown1").href= "store_activity.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp1").href= "store_activity.html?page=1";
+		else
+			$("pageUp1").href= "store_activity.html?page=" + (page - 1);
+			
+		$("pageDown2").href= "store_activity.html?page=" + (page + 1);
+		if(page - 1 <= 0)
+			$("pageUp2").href= "store_activity.html?page=1";
+		else
+			$("pageUp2").href= "store_activity.html?page=" + (page - 1);	
+	</script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_activity.js"></script>
+</html>

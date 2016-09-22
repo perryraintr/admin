@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="post_modify">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="js/helper.js"></script>
+		<script type="text/javascript" src="js/angular.min.js" ></script>
+	</head>
+	<body>
+		<form id="form_modify"  method="post" enctype="multipart/form-data">
+			<table>
+			<tbody>
+				<tr style="display: none;"><td>id</td><td><textarea id="id" name="id" rows="1" cols="80">{{post.post_guid}}</textarea></td></tr>
+				<tr><td>uid</td><td><textarea id="uid" name="uid" rows="1" cols="80">{{post.user_guid}}</textarea></td></tr>
+				<tr><td>name</td><td><textarea id="name" name="name" rows="2" cols="80">{{post.post_name}}</textarea></td></tr>
+				<tr><td>view</td><td><textarea id="view" name="view" rows="1" cols="80">{{post.post_view}}</textarea></td></tr>
+				<tr><td>comment</td><td><textarea id="comment" name="comment" rows="1" cols="80">{{post.post_comment}}</textarea></td></tr>
+				<tr>
+					<td>image<br/><input type="button" value="add" onclick="AddImage();"/><input type="button" value="remove" onclick="RemoveImage();"/></td>
+					<td id="images"><p ng-repeat="row in post.post_images"><img ng-src="{{row}}" width="100px" height="100px" /><input type="file" id="file" name="file" onchange="GetImage(this);" /></p></td>
+				</tr>
+				<tr><td>favorite</td><td><textarea id="favorite" name="favorite" rows="1" cols="80">{{post.post_favorite}}</textarea></td></tr>
+				<tr><td>price</td><td><textarea id="price" name="price" rows="1" cols="80">{{post.post_price}}</textarea></td></tr>
+				<tr><td>address</td><td><textarea id="address" name="address" rows="2" cols="80">{{post.post_address}}</textarea></td></tr>
+				<tr><td>brand</td><td><textarea id="brand" name="brand" rows="2" cols="80">{{post.post_brand}}</textarea></td></tr>
+				<tr><td>description</td><td><textarea id="description" name="description" rows="5" cols="80">{{post.post_description}}</textarea></td></tr>
+				<tr><td>t1</td><td><textarea id="t1" name="t1" rows="1" cols="80">{{post.tag_t1_id}}</textarea>1推荐  2 吐槽</td></tr>
+				<tr><td>t2</td><td><textarea id="t2" name="t2" rows="1" cols="80">{{post.tag_t2[0]}},{{post.tag_t2[1]}}</textarea>(最多选两个,逗号隔开)1 白领家具  2 办公室小确幸  3 人在旅途  4 生命在于运动</td></tr>
+				<tr><td>pid</td><td><textarea id="pid" name="pid" rows="1" cols="80">{{post.product_guid}}</textarea></td></tr>
+				<tr><td><input type="submit" value="modify" ng-click="modify()" /></td><td>{{json.message}}</td></tr>
+			</tbody>
+			</table>
+		</form>
+		<script type="text/javascript">
+			function GetImage(_this) {
+				_this.previousSibling.src = window.URL.createObjectURL(_this.files[0]);
+			}
+
+			function AddImage() {
+				var p = document.createElement("p");
+				p.innerHTML = "<img width=\"100px\" height=\"100px\" /><input type=\"file\" id=\"file\" name=\"file\" onchange=\"GetImage(this);\"/>";
+				document.getElementById("images").appendChild(p);
+			}
+
+			function RemoveImage() {
+				var images = document.getElementById("images");
+				var p = images.getElementsByTagName("p");
+				if (p.length > 1)
+					images.removeChild(p[p.length - 1]);
+				else
+					alert("Value cannot be null");
+			}
+		</script>
+	</body>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="post_modify.js"></script>
+
+</html>
