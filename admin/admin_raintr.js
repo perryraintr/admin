@@ -25,6 +25,10 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 		"name": "寻咖活动",
 		"choose": false,
 		"href": "store_activity.html"
+	}, {
+		"name": "提现列表",
+		"choose": false,
+		"href": "store_cash_tixian.html"
 	}];
 	
 	$scope.currentHref = $sce.trustAsResourceUrl($scope.list[0].href);
@@ -37,5 +41,6 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 		row.choose = true;
 		$scope.currentHref = $sce.trustAsResourceUrl(row.href);
 		console.log($scope.currentHref);
+		document.getElementById("refreshFrames").src = $scope.currentHref;
 	}
 });

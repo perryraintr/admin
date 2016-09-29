@@ -4,6 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/helper.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="store.css" />
 </head>
 <body>
 	<a id="pageUp1">page up</a>
@@ -16,7 +17,10 @@
 		<td>guid</td>
 		<td>二维码</td>
 		<td>member_guid</td>
+		<td>slogan</td>
 		<td>name</td>
+		<td>提现账户</td>
+		<td>是否上架（0: 有效，1:无效）</td>
 		<td>phone</td>
 		<td><div style="width: 120px;">address</div></td>
 		<td>longitude</td>
@@ -27,7 +31,6 @@
 		<td>video</td>
 		<td>date</td>
 		<td>owner</td>
-		<td>slogan</td>
 		<td>recommend</td>
 		<td>feature1</td>
 		<td>feature2</td>
@@ -57,7 +60,10 @@
 		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><img ng-src="{{row.qrcodeUrl}}" width="100px" height="100px" /><input value="生成二维码" type="button" ng-click="qrcode(row)"/></td>
 		<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.member_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="payment{{$index}}" name="payment{{$index}}" rows="10" cols="20">{{row.payment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="invaild{{$index}}" name="invaild{{$index}}" rows="10" cols="20">{{row.invaild}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="phone{{$index}}" name="phone{{$index}}" rows="10" cols="20">{{row.phone}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="address{{$index}}" name="address{{$index}}" rows="10" cols="20">{{row.address}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="longitude{{$index}}" name="longitude{{$index}}" rows="10" cols="20">{{row.longitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
@@ -75,7 +81,6 @@
 		<td>{{row.video}}</td>
 		<td><textarea id="date{{$index}}" name="date{{$index}}" rows="10" cols="20">{{row.date}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="owner{{$index}}" name="owner{{$index}}" rows="10" cols="20">{{row.owner}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-		<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="recommend{{$index}}" name="recommend{{$index}}" rows="10" cols="20">{{row.recommend}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><div>填写例：1,2 (1:适合学习,2:无线网络,3:自制甜点,4:美酒佳酿,5:咖啡课程,6:内有萌宠,7:有书阅读,8:自烘咖啡,9:有停车位,10:欢迎宠物,11:适合商谈,12:值得拍照)</div><textarea id="feature1{{$index}}" name="feature1{{$index}}" rows="10" cols="100">{{row.feature1}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><div>填写例：1,2 (1:V60,2:爱乐亚,3:摩卡壶,4:冰滴壶,5:chemex,6:法压壶,7:虹吸壶,8:意式)</div><textarea id="feature2{{$index}}" name="feature2{{$index}}" rows="10" cols="30">{{row.feature2}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>

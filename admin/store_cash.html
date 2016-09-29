@@ -20,6 +20,7 @@
 		<td>member_name</td>
 		<td>member_phone</td>
 		<td>member_wechat_id</td>
+		<td>发送信息</td>
 		<td style="background-color:yellowgreen;">
 			<span ng-show="row.type == -1">提现状态(0:提现中 1:提现完成)</span>
 			<span ng-show="row.type == 1">订单状态(0:未付款 1:已付款 2:已发货 3:完成 4:用户取消)</span>
@@ -40,6 +41,10 @@
 		<td>{{row.member_name}}</td>
 		<td>{{row.member_phone}}</td>
 		<td>{{row.member_wechat_id}}</td>
+		<td>
+			<textarea id="message{{$index}}" name="message{{$index}}" rows="10" cols="20">您的提现订单已处理，预计24小时之内到账，注意查收。</textarea>
+			<input type="button" value="sendMessage" ng-click="sendMessage(row, $index);" />
+		</td>
 		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="65">{{row.status}}</textarea></td>
 		<td>{{row.create_time}}</td>
 		<td>{{row.modify_time}}</td>

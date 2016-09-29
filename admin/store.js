@@ -1,9 +1,9 @@
 var app = angular.module('admin', []);
 app.controller('store', function($scope, $http) {
 	
-	if (!getCheckLogin()) {
-		location.href = "admin_login.html";
-	}
+//	if (!getCheckLogin()) {
+//		location.href = "admin_login.html";
+//	}
 	
 	$http.get(getHeadUrl() + "commodity.a?page=1").success(function(response) {
 		$scope.commodityList = response.body.array;
@@ -20,9 +20,9 @@ app.controller('store', function($scope, $http) {
 		var id = $("guid" + index).value;
 		var mid = $("mid" + index).value;
 		var name = $("name" + index).value;
-		console.log(name);
 		name = encodeURIComponent(name);
-		console.log(name);
+		var payment = $("payment" + index).value;
+		var invaild = $("invaild" + index).value;
 		var phone = $("phone" + index).value;
 		var address = $("address" + index).value;
 		var longitude = $("longitude" + index).value;
@@ -41,7 +41,7 @@ app.controller('store', function($scope, $http) {
 		$http({
 			method:'POST',
 			url: getHeadUrl() + "store_modify.a",
-			data: "id=" + id + "&mid=" + mid + "&name=" + name + "&phone=" + phone + "&address=" + address + "&longitude=" + longitude + "&latitude=" + latitude + "&date=" + dateStr + "&owner=" + owner + "&slogan=" + slogan + "&recommend=" + recommend + "&feature1=" + feature1 + "&feature2=" + feature2 + "&feature3=" + feature3 + "&star=" + star + "&activity=" + activity + "&comment=" + commentStr + "&description=" + description,
+			data: "id=" + id + "&mid=" + mid + "&name=" + name + "&payment=" + payment + "&invaild=" + invaild + "&phone=" + phone + "&address=" + address + "&longitude=" + longitude + "&latitude=" + latitude + "&date=" + dateStr + "&owner=" + owner + "&slogan=" + slogan + "&recommend=" + recommend + "&feature1=" + feature1 + "&feature2=" + feature2 + "&feature3=" + feature3 + "&star=" + star + "&activity=" + activity + "&comment=" + commentStr + "&description=" + description,
 			headers:{'Content-Type': 'application/x-www-form-urlencoded'}
 		}).error(function(data,state){
             alert("信息过长");

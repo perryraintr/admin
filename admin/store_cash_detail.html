@@ -12,6 +12,7 @@
 	<tbody>
 	<tr>
 		<td>guid</td>
+		<td>提现账户</td>
 		<td>订单金额</td>
 		<td>订单type</td>
 		<td>member_guid</td>
@@ -27,6 +28,9 @@
 	</tr>
 	<tr>
 		<td>{{row.guid}}</td>
+		<td><textarea id="payment" name="payment" rows="10" cols="20">{{row.payment}}</textarea>
+			<input type="button" value="modify" ng-click="modify();" />
+		</td>
 		<td>{{row.amount}}</td>
 		<td>{{row.type}}</td>
 		<td>{{row.member_guid}}</td>
