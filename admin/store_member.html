@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_member">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="store_member.css" />
+</head>
+<body>
+	<table border="1">
+	<tbody ng-repeat="row in json track by $index">
+	<tr>
+		<td>guid</td>
+		<td>member_guid</td>
+		<td>member_phone</td>
+		<td>member_name</td>
+		<td>member_avatar</td>	
+		<td>咖啡馆store_guid</td>
+		<td>咖啡馆store_name</td>
+		<td>咖啡馆store_image</td>
+		<td>op</td>
+	</tr>
+	<tr>
+		<td>{{row.guid}}</td>
+		<td>{{row.member_guid}}</td>
+		<td>{{row.member_name}}</td>
+		<td>{{row.member_phone}}</td>
+		<td><img src="{{row.member_avatar}}" width="50px" height="50px"/></td>
+		<td>{{row.store_guid}}</td>
+		<td>{{row.store_name}}</td>
+		<td><img src="{{row.store_image}}" width="50px" height="50px"/></td>
+		<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>
+	</tr>
+	</tbody>
+	</table>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_member.js"></script>
+</html>

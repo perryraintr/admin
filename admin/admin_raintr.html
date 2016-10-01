@@ -18,13 +18,13 @@
 
 	<body>
 		<div style="width: 100%; height: 100%;">
-			<div style="width: 70px; padding-left: 10px; float: left; height: 100%; background-color: #E0E0E0;">
+			<div style="width: 100px; padding-left: 10px; float: left; height: 100%; background-color: #E0E0E0;">
 				<div ng-repeat="row in list" style="margin-top: 10px;">
 					<a href="" ng-show="row.choose" style="color: red;" ng-click="currentUrl(row)" ng-bind="row.name"></a>
 					<a href="" ng-show="!row.choose" style="color: #404040;" ng-click="currentUrl(row)" ng-bind="row.name"></a>
 				</div>
 			</div>
-			<div style="float: left; background-color: white; position: absolute; top: 0px; left: 85px; right: 10px; bottom: 0px;">
+			<div style="float: left; background-color: white; position: absolute; top: 0px; left: 110px; right: 10px; bottom: 0px;">
 				<iframe id="refreshFrames" ng-src="{{currentHref}}" style="width: 100%; height: 98.8%;"></iframe>
 			</div>
 			<div style="clear: both;"></div>

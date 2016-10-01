@@ -1,13 +1,13 @@
 var app = angular.module('admin', []);
-app.controller('order', function($scope, $http) {
-	if(!getCheckLogin()) {
-		location.href = "admin_login.html";
-	}
+app.controller('order_store', function($scope, $http) {
+		if(!getCheckLogin()) {
+			location.href = "admin_login.html";
+		}
 
 	var mid = GetQueryInt("mid");
 	var page = GetQueryInt("page");
 	var ceshi = GetQueryInt("ceshi");
-
+	$scope.json = [];
 	if(mid > 0) {
 		$http.get(getHeadUrl() + "order.a?mid=" + mid + "&page=" + (page > 0 ? page : 1)).success(function(response) {
 			$scope.json = response.body.array;
@@ -16,7 +16,7 @@ app.controller('order', function($scope, $http) {
 			}
 		});
 	} else {
-		$http.get(getHeadUrl() + "order.a?page=" + (page > 0 ? page : 1)).success(function(response) {
+		$http.get(getHeadUrl() + "order.a?cid=all&page=" + (page > 0 ? page : 1)).success(function(response) {
 			if(ceshi == 1) {
 				$scope.json = response.body.array;
 			} else {
@@ -28,7 +28,6 @@ app.controller('order', function($scope, $http) {
 					}
 				}
 			}
-
 		});
 	}
 
@@ -68,11 +67,10 @@ app.controller('order', function($scope, $http) {
 
 	$scope.sendMessage2 = function(model, index) {
 		var message2 = $("message2" + index).value;
-		$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.member_wechat_id + "&express=http://www.sf-express.com/mobile/cn/sc/dynamic_functions/waybill/waybill_query_info.html?billno=" + message2 +"&title=喔耶！您的咖啡已上路，预计明天中午送达。&deliver=顺丰&order=" + message2).success(function() {
+		$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.member_wechat_id + "&express=http://www.sf-express.com/mobile/cn/sc/dynamic_functions/waybill/waybill_query_info.html?billno=" + message2 + "&title=喔耶！您的咖啡已上路，预计明天中午送达。&deliver=顺丰&order=" + message2).success(function() {
 			alert("发送成功");
 		});
 	}
-
 
 	$scope.searchClicked = function() {
 		var orderNo = document.getElementById("orderNo").value;

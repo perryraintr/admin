@@ -1,9 +1,9 @@
 var app = angular.module('admin', []);
 app.controller('store', function($scope, $http) {
 	
-//	if (!getCheckLogin()) {
-//		location.href = "admin_login.html";
-//	}
+	if (!getCheckLogin()) {
+		location.href = "admin_login.html";
+	}
 	
 	$http.get(getHeadUrl() + "commodity.a?page=1").success(function(response) {
 		$scope.commodityList = response.body.array;
@@ -27,6 +27,7 @@ app.controller('store', function($scope, $http) {
 		var address = $("address" + index).value;
 		var longitude = $("longitude" + index).value;
 		var latitude = $("latitude" + index).value;
+//		var rank = $("rank" + index).value;
 		var dateStr = $("date" + index).value;
 		var owner = $("owner" + index).value;
 		var slogan = $("slogan" + index).value;
