@@ -16,6 +16,7 @@
 		<td><div style="width: 100px;">op</div></td>
 		<td>guid</td>
 		<td>二维码</td>
+		<td>商店二维码</td>
 		<td>member_guid</td>
 		<td>slogan</td>
 		<td>name</td>
@@ -25,7 +26,6 @@
 		<td><div style="width: 120px;">address</div></td>
 		<td>longitude</td>
 		<td>latitude</td>
-		<!--<td>咖啡馆排序</td>-->
 		<td>image主图</td>
 		<td>avatar店长头像</td>
 		<td><div style="width: 150px;">店长推荐</div></td>
@@ -62,6 +62,9 @@
 		</td>
 		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><img ng-src="{{row.qrcodeUrl}}" width="100px" height="100px" /><input value="生成二维码" type="button" ng-click="qrcode(row)"/></td>
+		<td>
+			<img ng-src="http://interface.pinshe.org/v1/qrcode.a?url=http://www.pinshe.org/html/v1/coffee/qrcode_cafepay.html?sid={{row.guid}}" width="100px" height="100px" />
+		</td>
 		<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.member_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
