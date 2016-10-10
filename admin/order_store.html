@@ -99,17 +99,17 @@
 		var page = GetQueryInt("page");
 		if(page == 0)
 			page = 1;
-		$("pageDown1").href= "order.html?page=" + (page + 1);
+		$("pageDown1").href= "order_store.html?page=" + (page + 1);
 		if(page - 1 <= 0)
-			$("pageUp1").href= "order.html?page=1";
+			$("pageUp1").href= "order_store.html?page=1";
 		else
-			$("pageUp1").href= "order.html?page=" + (page - 1);
+			$("pageUp1").href= "order_store.html?page=" + (page - 1);
 			
-		$("pageDown2").href= "order.html?page=" + (page + 1);
+		$("pageDown2").href= "order_store.html?page=" + (page + 1);
 		if(page - 1 <= 0)
-			$("pageUp2").href= "order.html?page=1";
+			$("pageUp2").href= "order_store.html?page=1";
 		else
-			$("pageUp2").href= "order.html?page=" + (page - 1);		
+			$("pageUp2").href= "order_store.html?page=" + (page - 1);		
 	</script>
 </body>
 <script type="text/javascript" src="js/global.js"></script>

@@ -17,17 +17,7 @@ app.controller('order_store', function($scope, $http) {
 		});
 	} else {
 		$http.get(getHeadUrl() + "order.a?cid=all&page=" + (page > 0 ? page : 1)).success(function(response) {
-			if(ceshi == 1) {
-				$scope.json = response.body.array;
-			} else {
-				$scope.json = [];
-				for(var i = 0; i < response.body.array.length; i++) {
-					$scope.order = response.body.array[i];
-					if($scope.order.member_wechat_id == "o1D_JwHikK5LBt_Y__Ukr9p4tKsY" || $scope.order.member_wechat_id == "o1D_JwGKMNWZmBYLxghYYw0GIlUg" || $scope.order.member_wechat_id == "o1D_JwFbCrjU1rPJdO6-ljRQC5qE" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs" || $scope.order.member_wechat_id == "o1D_JwGTL0ZN81hpxJSxflvtXQj8" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs") {} else {
-						$scope.json.push($scope.order);
-					}
-				}
-			}
+			$scope.json = response.body.array;
 		});
 	}
 
@@ -98,34 +88,14 @@ app.controller('order_store', function($scope, $http) {
 	$scope.status1Clicked = function() {
 		$http.get(getHeadUrl() + "order.a?status=1").success(function(response) {
 			$scope.json = [];
-			if(ceshi == 1) {
-				$scope.json = response.body.array;
-			} else {
-				for(var i = 0; i < response.body.array.length; i++) {
-					$scope.order = response.body.array[i];
-					if($scope.order.member_wechat_id == "o1D_JwHikK5LBt_Y__Ukr9p4tKsY" || $scope.order.member_wechat_id == "o1D_JwGKMNWZmBYLxghYYw0GIlUg" || $scope.order.member_wechat_id == "o1D_JwFbCrjU1rPJdO6-ljRQC5qE" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs" || $scope.order.member_wechat_id == "o1D_JwGTL0ZN81hpxJSxflvtXQj8" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs") {} else {
-						$scope.json.push($scope.order);
-					}
-				}
-			}
-
+			$scope.json = response.body.array;
 		});
 	}
 
 	$scope.status2Clicked = function() {
 		$http.get(getHeadUrl() + "order.a?status=2").success(function(response) {
 			$scope.json = [];
-			if(ceshi == 1) {
-				$scope.json = response.body.array;
-			} else {
-				for(var i = 0; i < response.body.array.length; i++) {
-					$scope.order = response.body.array[i];
-					if($scope.order.member_wechat_id == "o1D_JwHikK5LBt_Y__Ukr9p4tKsY" || $scope.order.member_wechat_id == "o1D_JwGKMNWZmBYLxghYYw0GIlUg" || $scope.order.member_wechat_id == "o1D_JwFbCrjU1rPJdO6-ljRQC5qE" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs" || $scope.order.member_wechat_id == "o1D_JwGTL0ZN81hpxJSxflvtXQj8" || $scope.order.member_wechat_id == "o1D_JwGiLMukMtRIo6HU5M0ngxPs") {} else {
-						$scope.json.push($scope.order);
-					}
-				}
-			}
-
+			$scope.json = response.body.array;
 		});
 	}
 
