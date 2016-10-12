@@ -1,14 +1,18 @@
 var app = angular.module("admin", []);
 app.controller("admin_raintr", function($scope, $http, $sce) {
 
-//	if (!getCheckLogin()) {
-//		location.href = "admin_login.html";
-//	}
+	if (!getCheckLogin()) {
+		location.href = "admin_login.html";
+	}
 	
 	$scope.list = [{
 		"name": "品社会员",
 		"choose": true,
 		"href": "member.html"
+	}, {
+		"name": "会员订单",
+		"choose": false,
+		"href": "order_member.html"
 	}, {
 		"name": "咖啡商品",
 		"choose": false,
