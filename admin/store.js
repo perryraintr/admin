@@ -1,13 +1,11 @@
 var app = angular.module('admin', []);
 app.controller('store', function($scope, $http) {
-
 	//	if (!getCheckLogin()) {
 	//		location.href = "admin_login.html";
 	//	}
 
 	$http.get(getHeadUrl() + "commodity.a?page=1").success(function(response) {
 		$scope.commodityList = response.body.array;
-
 		$http.get(getHeadUrl() + "store.a?page=" + (GetQueryInt("page") == 0 ? 1 : GetQueryInt("page"))).success(
 			function(response) {
 				$scope.json = response.body.array;

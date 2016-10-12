@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="store_cash_tixian.css" />
 </head>
 <body>
+	<a href="store_cash_tixian.html" target="_blank">打开当前url</a>
+	<br />
 	<a id="pageUp1">page up</a>
 	<a id="pageDown1">page down</a>
 	<table border="1">
@@ -21,10 +23,9 @@
 			<span ng-show="row.type == 1">订单状态(0:未付款 1:已付款 2:已发货 3:完成 4:用户取消)</span>
 		</td>
 		<td>发送信息</td>
-		<td>member_phone</td>
-		<td>member_name</td>
-		<td>member_guid</td>
-		<td>member_wechat_id</td>
+		<td>merchant_phone</td>
+		<td>merchant_guid</td>
+		<td>merchant_wechat_id</td>
 		<td>订单type</td>
 		<td>创建时间</td>
 		<td>修改时间</td>
@@ -46,10 +47,9 @@
 			<textarea id="message{{$index}}" name="message{{$index}}" rows="10" cols="20">您的提现订单已处理，预计24小时之内到账，注意查收。</textarea>
 			<input type="button" value="sendMessage" ng-click="sendMessage(row, $index);" />
 		</td>
-		<td>{{row.member_phone}}</td>
-		<td>{{row.member_name}}</td>
-		<td>{{row.member_guid}}</td>
-		<td>{{row.member_wechat_id}}</td>
+		<td>{{row.merchant_phone}}</td>
+		<td>{{row.merchant_guid}}</td>
+		<td>{{row.merchant_wechat_id}}</td>
 		<td>提现记录</td>
 		<td>{{row.create_time}}</td>
 		<td>{{row.modify_time}}</td>

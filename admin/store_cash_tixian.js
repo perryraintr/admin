@@ -2,7 +2,7 @@ var app = angular.module('admin', []);
 app.controller('store_cash_tixian', function($scope, $http) {
 	var page = GetQueryInt("page");
 
-	$http.get(getHeadUrl() + "cash.a?type=-1&page=" + (page > 0 ? page : 1)).success(function(response) {
+	$http.get(getHeadUrl() + "store_cash.a?type=-1&page=" + (page > 0 ? page : 1)).success(function(response) {
 		$scope.json = response.body.array;
 	});
 
@@ -12,7 +12,7 @@ app.controller('store_cash_tixian', function($scope, $http) {
 		var payment = $("payment" + index).value;
 		$http({
 			method: 'POST',
-			url: getHeadUrl() + "cash_modify.a",
+			url: getHeadUrl() + "store_cash_modify.a",
 			data: "id=" + id + "&status=" + status + "&payment=" + payment,
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -24,7 +24,7 @@ app.controller('store_cash_tixian', function($scope, $http) {
 
 	$scope.delete = function(id) {
 		if(confirm("are you sure remove it")) {
-			$http.get(getHeadUrl() + "cash_remove.a?id=" + id).success(function(response) {
+			$http.get(getHeadUrl() + "store_cash_remove.a?id=" + id).success(function(response) {
 				window.location.reload();
 			});
 		}
@@ -32,7 +32,7 @@ app.controller('store_cash_tixian', function($scope, $http) {
 
 	$scope.sendMessage = function(model, index) {
 		var message = $("message" + index).value;
-		$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.member_wechat_id + "&m=" + message).success(function() {
+		$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.merchant_wechat_id + "&m=" + message).success(function() {
 			alert("发送成功");
 		});
 	}

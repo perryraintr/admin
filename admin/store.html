@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="store.css" />
 </head>
 <body>
+	<a href="store.html" target="_blank">打开当前url</a>
+	<br />
 	<a id="pageUp1">page up</a>
 	<a id="pageDown1">page down</a>
 	<a href="store_add.html" target="_blank">add</a>
@@ -17,7 +19,8 @@
 		<td>guid</td>
 		<td>二维码</td>
 		<td>支付二维码</td>
-		<td>member_guid</td>
+		<td>merchant_guid</td>
+		<td>咖啡馆余额</td>
 		<td>slogan</td>
 		<td>name</td>
 		<td>提现账户</td>
@@ -65,7 +68,8 @@
 		<td>
 			<img ng-src="http://interface.pinshe.org/v1/qrcode.a?url=http://www.pinshe.org/html/v1/coffee/qrcode_cafepay.html?sid={{row.guid}}" width="100px" height="100px" />
 		</td>
-		<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.member_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.merchant_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="current{{$index}}" name="current{{$index}}" rows="10" cols="20">{{row.current}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td><textarea id="payment{{$index}}" name="payment{{$index}}" rows="10" cols="20">{{row.payment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>

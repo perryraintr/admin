@@ -15,10 +15,10 @@
 		<td>提现账户</td>
 		<td>订单金额</td>
 		<td>订单type</td>
-		<td>member_guid</td>
-		<td>member_name</td>
-		<td>member_phone</td>
-		<td>member_wechat_id</td>
+		<td>merchant_guid</td>
+		<td>merchant_name</td>
+		<td>merchant_phone</td>
+		<td>merchant_wechat_id</td>
 		<td>发送信息</td>
 		<td style="background-color:yellowgreen;">
 			<span>提现状态(0:提现中 1:提现完成)</span>
@@ -33,10 +33,10 @@
 		</td>
 		<td>{{row.amount}}</td>
 		<td>{{row.type}}</td>
-		<td>{{row.member_guid}}</td>
-		<td>{{row.member_name}}</td>
-		<td>{{row.member_phone}}</td>
-		<td>{{row.member_wechat_id}}</td>
+		<td>{{row.merchant_guid}}</td>
+		<td>{{row.merchant_name}}</td>
+		<td>{{row.merchant_phone}}</td>
+		<td>{{row.merchant_wechat_id}}</td>
 		<td>
 			<textarea id="message" name="message" rows="10" cols="20">您的提现订单已处理，预计24小时之内到账，注意查收。</textarea>
 			<input type="button" value="sendMessage" ng-click="sendMessage();" />

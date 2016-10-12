@@ -3,7 +3,7 @@ app.controller('store_cash', function($scope, $http) {
 	var id = GetQueryInt("id");
 //	id = 71;
 	
-	$http.get(getHeadUrl() + "cash.a?id=" + id).success(function(response) {
+	$http.get(getHeadUrl() + "store_cash.a?id=" + id).success(function(response) {
 		$scope.row = response.body;
 	});
 	
@@ -19,7 +19,7 @@ app.controller('store_cash', function($scope, $http) {
 		var payment = $("payment").value;
 		$http({
 			method:'POST',
-			url: getHeadUrl() + "cash_modify.a",
+			url: getHeadUrl() + "store_cash_modify.a",
 			data: "id=" + $scope.row.guid + "&status=" + status + "&payment=" + payment ,
 			headers:{'Content-Type': 'application/x-www-form-urlencoded'}
 		}).error(function(data,state){
