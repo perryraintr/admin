@@ -1,8 +1,8 @@
 var app = angular.module('admin', []);
 app.controller('store', function($scope, $http) {
-	//	if (!getCheckLogin()) {
-	//		location.href = "admin_login.html";
-	//	}
+	if (!getCheckLogin()) {
+		location.href = "admin_login.html";
+	}
 
 	$http.get(getHeadUrl() + "commodity.a?page=1").success(function(response) {
 		$scope.commodityList = response.body.array;
@@ -21,10 +21,13 @@ app.controller('store', function($scope, $http) {
 		name = encodeURIComponent(name);
 		var payment = $("payment" + index).value;
 		var invaild = $("invaild" + index).value;
+		var is_delete = $("delete" + index).value;
 		var phone = $("phone" + index).value;
 		var address = $("address" + index).value;
 		var longitude = $("longitude" + index).value;
 		var latitude = $("latitude" + index).value;
+		var wifi = $("wifi" + index).value;
+		var wifipassword = $("wifipassword" + index).value;
 		//		var rank = $("rank" + index).value;
 		var dateStr = $("date" + index).value;
 		var owner = $("owner" + index).value;
@@ -40,7 +43,7 @@ app.controller('store', function($scope, $http) {
 		$http({
 			method: 'POST',
 			url: getHeadUrl() + "store_modify.a",
-			data: "id=" + id + "&mid=" + mid + "&name=" + name + "&payment=" + payment + "&invaild=" + invaild + "&phone=" + phone + "&address=" + address + "&longitude=" + longitude + "&latitude=" + latitude + "&date=" + dateStr + "&owner=" + owner + "&slogan=" + slogan + "&recommend=" + recommend + "&feature1=" + feature1 + "&feature2=" + feature2 + "&feature3=" + feature3 + "&star=" + star + "&activity=" + activity + "&comment=" + commentStr + "&description=" + description,
+			data: "id=" + id + "&mid=" + mid + "&name=" + name + "&payment=" + payment + "&invaild=" + invaild + "&is_delete=" + is_delete + "&phone=" + phone + "&address=" + address + "&longitude=" + longitude + "&latitude=" + latitude + "&wifi=" + wifi + "&wifi_password=" + wifipassword + "&date=" + dateStr + "&owner=" + owner + "&slogan=" + slogan + "&recommend=" + recommend + "&feature1=" + feature1 + "&feature2=" + feature2 + "&feature3=" + feature3 + "&star=" + star + "&activity=" + activity + "&comment=" + commentStr + "&description=" + description,
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
