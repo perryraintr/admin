@@ -22,6 +22,12 @@ app.controller('store_cash', function($scope, $http) {
 			url: getHeadUrl() + "store_cash_modify.a",
 			data: "id=" + $scope.row.guid + "&status=" + status + "&payment=" + payment ,
 			headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(response) {
+			if (status == 1) {
+				if ($scope.row.merchant_getui_id.length > 0) {
+					$http.get(getHeadUrl() + "getui.a?cid=" + $scope.row.merchant_getui_id  + "&title=&body=品社已处理你的提现需求，预计24小时内到账，请注意查收。").success(function(response) {});	
+				}
+			}
 		}).error(function(data,state){
             alert("信息过长");
 		}); 

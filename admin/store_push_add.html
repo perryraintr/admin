@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_push_add">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+</head>
+<body>
+	<form id="form_add" method="post" enctype="multipart/form-data">
+		<table>
+		<tbody>
+			<tr style="display: none;"><td>sid</td><td><textarea id="sid" name="sid" rows="2" cols="80" placeholder="必填" readonly="readonly">{{id}}</textarea></td></tr>
+			<tr><td>name</td><td><textarea id="name" name="name" rows="2" cols="80" placeholder="必填"></textarea></td></tr>
+			<tr><td>url</td><td><textarea id="url" name="url" rows="2" cols="80" placeholder="必填"></textarea></td></tr>	
+			<tr>
+				<td>image<br/></td>
+				<td id="images"><p><img width="100px" height="100px" /><input type="file" id="file" name="file" onchange="GetImage(this);" /></p></td>
+			</tr>
+			<tr><td><input type="submit" value="add" ng-click="add()" /></td><td>{{json.guid}}</td></tr>
+		</tbody>
+		</table>
+	</form>
+	<script type="text/javascript">
+    	function GetImage(_this){
+    		_this.previousSibling.src = window.URL.createObjectURL(_this.files[0]);
+    	}
+    </script>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_push_add.js"></script>
+</html>

@@ -1,6 +1,6 @@
 var app = angular.module('admin', []);
-app.controller('member_modify', function($scope, $http) {
-	$http.get(getHeadUrl() + "member.a?id=" + GetQueryString("id")).success(
+app.controller('merchant_modify', function($scope, $http) {
+	$http.get(getHeadUrl() + "merchant.a?id=" + GetQueryString("id")).success(
 		function(response) {
 			$scope.tag = response.body;		
 		}
@@ -10,7 +10,7 @@ app.controller('member_modify', function($scope, $http) {
 		var formdata = new FormData($("form_modify"));
 		$http({
 			method: 'POST',
-			url: getHeadUrl() + "member_modify.a",
+			url: getHeadUrl() + "merchant_modify.a",
 			data: formdata,
 			headers: {
 				'Content-Type': undefined

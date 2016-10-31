@@ -14,17 +14,9 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 		"choose": false,
 		"href": "order_member.html"
 	}, {
-		"name": "咖啡商品",
+		"name": "咖啡豆商品",
 		"choose": false,
 		"href": "commodity.html"
-	}, {
-		"name": "咖啡馆",
-		"choose": false,
-		"href": "store.html"
-	}, {
-		"name": "咖啡馆订单",
-		"choose": false,
-		"href": "store_order.html"
 	}, {
 		"name": "电商订单",
 		"choose": false,
@@ -33,6 +25,20 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 		"name": "寻咖活动",
 		"choose": false,
 		"href": "store_activity.html"
+	}];
+	
+	$scope.storelist = [{
+		"name": "咖啡馆会员",
+		"choose": false,
+		"href": "merchant.html"
+	}, {
+		"name": "咖啡馆",
+		"choose": false,
+		"href": "store.html"
+	}, {
+		"name": "咖啡馆订单",
+		"choose": false,
+		"href": "store_order.html"
 	}, {
 		"name": "提现列表",
 		"choose": false,
@@ -46,9 +52,27 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 		for (var i = 0; i < $scope.list.length; i++) {
 			$scope.list[i].choose = false;
 		}
+		for (var i = 0; i < $scope.storelist.length; i++) {
+			$scope.storelist[i].choose = false;
+		}
 		row.choose = true;
 		$scope.currentHref = $sce.trustAsResourceUrl(row.href);
 		console.log($scope.currentHref);
 		document.getElementById("refreshFrames").src = $scope.currentHref;
 	}
+	
+	$scope.currentStoreUrl = function(row) {
+		for (var i = 0; i < $scope.list.length; i++) {
+			$scope.list[i].choose = false;
+		}
+		
+		for (var i = 0; i < $scope.storelist.length; i++) {
+			$scope.storelist[i].choose = false;
+		}
+		row.choose = true;
+		$scope.currentHref = $sce.trustAsResourceUrl(row.href);
+		console.log($scope.currentHref);
+		document.getElementById("refreshFrames").src = $scope.currentHref;
+	}
+	
 });

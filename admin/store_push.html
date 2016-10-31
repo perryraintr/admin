@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_push">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="store_push.css" />
+</head>
+<body>
+	<a href="store_push.html?sid={{sid}}" target="_blank">打开当前url</a>
+	<br />
+	<a href="store_push_add.html?sid={{sid}}" target="_blank">add</a>
+	<br />
+	最多添加2条数据！最多添加2条数据！
+	<br />
+	<br />
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>guid</td>
+		<td>name</td>
+		<td>url</td>
+		<td>推送显示图片</td>
+		<td>create_time</td>
+		<td>op</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json">
+		<td>{{row.guid}}</td>
+		<td>{{row.name}}</td>
+		<td>{{row.url}}</td>
+		<td><img ng-src="{{row.image}}" width="100px" height="100px" /></td>
+		<td>{{row.create_time}}</td>
+		<td><input type="button" value="delete" ng-click="deleteAction(row);" /></td>
+	</tr>
+	</tbody>
+	</table>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_push.js"></script>
+</html>

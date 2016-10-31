@@ -24,6 +24,7 @@
 		<td>用户微信名称</td>
 		<td>用户微信wcid</td>
 		<td><div style="width: 130px;">咖啡馆</div></td>
+		<td>支付方式（1：member pay 2：wechat pay）</td>
 		<td>订单状态(0:未付款 1:已付款 2:已发货 3:完成 4:用户取消)</td>
 		<td>创建时间</td>
 		<td>修改时间</td>
@@ -40,6 +41,7 @@
 		<td>{{row.member_name}}</td>
 		<td>{{row.member_wechat_id}}</td>
 		<td>{{row.details[0].store_name}}</td>
+		<td>{{row.type}}</td>
 		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="20">{{row.status}}</textarea></td>
 		<td>{{row.create_time}}</td>
 		<td>{{row.modify_time}}</td>
@@ -52,19 +54,25 @@
 	<a id="pageDown2">page down</a>
 	<script type="text/javascript">
 		var page = GetQueryInt("page");
+		var sid = GetQueryInt("sid");
+		var requestSid = "";
+		if (sid > 0) {
+			requestSid = "&sid=" + sid;
+		}
+		
 		if(page == 0)
 			page = 1;
-		$("pageDown1").href= "store_order.html?page=" + (page + 1);
+		$("pageDown1").href= "store_order.html?page=" + (page + 1) + requestSid;
 		if(page - 1 <= 0)
-			$("pageUp1").href= "store_order.html?page=1";
+			$("pageUp1").href= "store_order.html?page=1" + requestSid;
 		else
-			$("pageUp1").href= "store_order.html?page=" + (page - 1);
+			$("pageUp1").href= "store_order.html?page=" + (page - 1) + requestSid;
 			
-		$("pageDown2").href= "store_order.html?page=" + (page + 1);
+		$("pageDown2").href= "store_order.html?page=" + (page + 1) + requestSid;
 		if(page - 1 <= 0)
-			$("pageUp2").href= "store_order.html?page=1";
+			$("pageUp2").href= "store_order.html?page=1" + requestSid;
 		else
-			$("pageUp2").href= "store_order.html?page=" + (page - 1);		
+			$("pageUp2").href= "store_order.html?page=" + (page - 1) + requestSid;		
 	</script>
 </body>
 <script type="text/javascript" src="js/global.js"></script>
