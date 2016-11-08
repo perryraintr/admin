@@ -45,11 +45,11 @@
 	</tr>
 	<tr>
 		<td><input type="button" value="modify" ng-click="modify($index);" /><a href="order_detail.html?id={{row.guid}}" target="_blank">detail</a></td>
-		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea></td>
-		<td><textarea id="orderno{{$index}}" name="orderno{{$index}}" rows="10" cols="20" readonly="readonly">{{row.order_no}}</textarea></td>
-		<td><textarea id="count{{$index}}" name="count{{$index}}" rows="10" cols="20" readonly="readonly">{{row.count}}</textarea></td>
-		<td><textarea id="amount{{$index}}" name="amount{{$index}}" rows="10" cols="20" readonly="readonly">{{row.amount}}</textarea></td>
-		<td><textarea id="current{{$index}}" name="current{{$index}}" rows="10" cols="20" readonly="readonly">{{row.current}}</textarea></td>
+		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="12" cols="20" readonly="readonly">{{row.guid}}</textarea></td>
+		<td><textarea id="orderno{{$index}}" name="orderno{{$index}}" rows="12" cols="20" readonly="readonly">{{row.order_no}}</textarea></td>
+		<td><textarea id="count{{$index}}" name="count{{$index}}" rows="12" cols="20" readonly="readonly">{{row.count}}</textarea></td>
+		<td><textarea id="amount{{$index}}" name="amount{{$index}}" rows="12" cols="20" readonly="readonly">{{row.amount}}</textarea></td>
+		<td><textarea id="current{{$index}}" name="current{{$index}}" rows="12" cols="20" readonly="readonly">{{row.current}}</textarea></td>
 		<td>{{row.type}}</td>
 		<td>{{row.member_guid}}</td>
 		<td>{{row.member_name}}</td>
@@ -83,10 +83,10 @@
 			</tbody>
 			</table>
 		</td>
-		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="20">{{row.status}}</textarea></td>
-		<td><textarea id="grind{{$index}}" name="grind{{$index}}" rows="10" cols="20">{{row.grind}}</textarea></td>
-		<td><textarea id="cost{{$index}}" name="cost{{$index}}" rows="10" cols="20">{{row.cost}}</textarea></td>
-		<td><textarea id="memo{{$index}}" name="memo{{$index}}" rows="10" cols="50">{{row.memo}}</textarea></td>
+		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="20">{{row.status}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+		<td><textarea id="grind{{$index}}" name="grind{{$index}}" rows="12" cols="20">{{row.grind}}</textarea></td>
+		<td><textarea id="cost{{$index}}" name="cost{{$index}}" rows="12" cols="20">{{row.cost}}</textarea></td>
+		<td><textarea id="memo{{$index}}" name="memo{{$index}}" rows="12" cols="50">{{row.memo}}</textarea></td>
 		<td>{{row.create_time}}</td>
 		<td>{{row.modify_time}}</td>
 		<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>

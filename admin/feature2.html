@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="feature2">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+	<a href="feature2_add.html" target="_blank">add</a>
+	<table border="1">
+	<tbody>
+	<tr>
+		<td>op</td>
+		<td>id</td>
+		<td>image</td>
+		<td>name</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr ng-repeat="row in json" style="height: 50px;">
+		<td>
+			<a href="feature2_modify.html?id={{row.guid}}" target="_blank">modify</a>
+		</td>
+		<td>{{row.guid}}</td>
+		<td><img src="{{row.url}}" width="100px" height="100px"/></td>
+		<td>{{row.name}}</td>
+	</tr>
+	</tbody>
+	</table>
+	<a href="feature2_add.html" target="_blank">add</a>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="feature2.js"></script>
+</html>

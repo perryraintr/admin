@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="feature1_add">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+</head>
+<body>
+	<form id="form_add" method="post" enctype="multipart/form-data">
+		<table>
+		<tbody>
+			<tr>
+				<td>image</td>
+				<td><img width="100px" height="100px" /><input type="file" id="file" name="file" onchange="GetImage(this);" /></td>
+			</tr>
+			<tr><td>name</td><td><textarea id="name" name="name" rows="5" cols="80"></textarea></td></tr>
+			<tr><td><input type="submit" value="add" ng-click="add()" /></td><td>{{json.guid}}</td></tr>
+		</tbody>
+		</table>
+	</form>
+</body>
+<script type="text/javascript">
+	function GetImage(_this){
+		_this.previousSibling.src = window.URL.createObjectURL(_this.files[0]);
+	}
+</script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="feature1_add.js"></script>
+</html>

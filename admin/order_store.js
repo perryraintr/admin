@@ -1,43 +1,37 @@
 var app = angular.module('admin', []);
 app.controller('order_store', function($scope, $http) {
-		if(!getCheckLogin()) {
-			location.href = "admin_login.html";
-		}
-
-	var mid = GetQueryInt("mid");
-	var page = GetQueryInt("page");
-	var ceshi = GetQueryInt("ceshi");
-	$scope.json = [];
-	if(mid > 0) {
-		$http.get(getHeadUrl() + "order.a?mid=" + mid + "&page=" + (page > 0 ? page : 1)).success(function(response) {
-			$scope.json = response.body.array;
-			for(var i = 0; i < $scope.json.length; i++) {
-				$scope.orderDetail($scope.json[i], i);
-			}
-		});
-	} else {
-		$http.get(getHeadUrl() + "order.a?cid=all&page=" + (page > 0 ? page : 1)).success(function(response) {
-			$scope.json = response.body.array;
-		});
+	if(!getCheckLogin()) {
+		location.href = "admin_login.html";
 	}
 
+	var page = GetQueryInt("page");
+	$scope.json = [];
+
+	$http.get(getHeadUrl() + "order.a?cid=all&page=" + (page > 0 ? page : 1)).success(function(response) {
+		$scope.json = response.body.array;
+	});
+
 	$scope.modify = function(index) {
-		var id = $("guid" + index).value;
-		var orderno = $("orderno" + index).value;
-		var grind = $("grind" + index).value;
-		var cost = $("cost" + index).value;
-		var memo = $("memo" + index).value;
-		var status = $("status" + index).value;
-		$http({
-			method: 'POST',
-			url: getHeadUrl() + "order_modify.a",
-			data: "id=" + id + "&orderno=" + orderno + "&grind=" + grind + "&cost=" + cost + "&memo=" + memo + "&status=" + status,
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			}
-		}).error(function(data, state) {
-			alert("信息过长");
-		});
+		if(confirm("确定修改订单状态？")) {
+			var id = $("guid" + index).value;
+			var orderno = $("orderno" + index).value;
+			var grind = $("grind" + index).value;
+			var cost = $("cost" + index).value;
+			var memo = $("memo" + index).value;
+			var status = $("status" + index).value;
+			$http({
+				method: 'POST',
+				url: getHeadUrl() + "order_modify.a",
+				data: "id=" + id + "&orderno=" + orderno + "&grind=" + grind + "&cost=" + cost + "&memo=" + memo + "&status=" + status,
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			}).success(function(response) {
+				alert("修改成功");
+			}).error(function(data, state) {
+				alert("信息过长");
+			});
+		}
 	}
 
 	$scope.delete = function(id) {
@@ -56,10 +50,12 @@ app.controller('order_store', function($scope, $http) {
 	}
 
 	$scope.sendMessage2 = function(model, index) {
-		var message2 = $("message2" + index).value;
-		$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.member_wechat_id + "&express=http://www.sf-express.com/mobile/cn/sc/dynamic_functions/waybill/waybill_query_info.html?billno=" + message2 + "&title=喔耶！您的咖啡已上路，预计明天中午送达。&deliver=顺丰&order=" + message2).success(function() {
-			alert("发送成功");
-		});
+		if(confirm("确定发送发货通知？")) {
+			var message2 = $("message2" + index).value;
+			$http.get(getHeadUrl() + "wechat_send.a?wcid=" + model.member_wechat_id + "&express=http://www.sf-express.com/mobile/cn/sc/dynamic_functions/waybill/waybill_query_info.html?billno=" + message2 + "&title=喔耶！您的咖啡已上路，预计明天中午送达。&deliver=顺丰&order=" + message2).success(function() {
+				alert("发送成功");
+			});
+		}
 	}
 
 	$scope.searchClicked = function() {

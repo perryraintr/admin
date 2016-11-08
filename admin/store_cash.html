@@ -31,21 +31,25 @@
 	</tr>
 	<tr>
 		<td><input type="button" value="modify" ng-click="modify($index);" /></td>
-		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea></td>
-		<td><textarea id="amount{{$index}}" name="amount{{$index}}" rows="10" cols="20" readonly="readonly">{{row.amount}}</textarea></td>
+		<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="12" cols="20" readonly="readonly">{{row.guid}}</textarea></td>
+		<td><textarea id="amount{{$index}}" name="amount{{$index}}" rows="12" cols="20" readonly="readonly">{{row.amount}}</textarea></td>
 		<td>
 			<span ng-show="row.type == 1">{{member_name}} 支付成功</span>
 			<span ng-show="row.type == -1">提现记录</span>
 		</td>
-		<td>{{row.member_guid}}</td>
-		<td>{{row.member_name}}</td>
-		<td>{{row.member_phone}}</td>
-		<td>{{row.member_wechat_id}}</td>
+		<td ng-show="row.type == 1">{{row.member_guid}}</td>
+		<td ng-show="row.type == 1">{{row.member_name}}</td>
+		<td ng-show="row.type == 1">{{row.member_phone}}</td>
+		<td ng-show="row.type == 1">{{row.member_wechat_id}}</td>
+		<td ng-show="row.type == -1">{{row.merchant_guid}}</td>
+		<td ng-show="row.type == -1">{{row.merchant_name}}</td>
+		<td ng-show="row.type == -1">{{row.merchant_phone}}</td>
+		<td ng-show="row.type == -1">{{row.merchant_wechat_id}}</td>
 		<td>
 			<textarea id="message{{$index}}" name="message{{$index}}" rows="10" cols="20">您的提现订单已处理，预计24小时之内到账，注意查收。</textarea>
 			<input type="button" value="sendMessage" ng-click="sendMessage(row, $index);" />
 		</td>
-		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="65">{{row.status}}</textarea></td>
+		<td><textarea id="status{{$index}}" name="status{{$index}}" rows="10" cols="65">{{row.status}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 		<td>{{row.create_time}}</td>
 		<td>{{row.modify_time}}</td>
 		<td><input type="button" value="delete" ng-click="delete(row.guid);" /></td>

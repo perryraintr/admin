@@ -8,7 +8,7 @@ function getCheckLogin() {
 }
 
 function getHeadUrl() {
-//		return "http://192.168.0.138/v1/";
+//		return "http://192.168.1.96/v1/";
 	return "http://interface.pinshe.org/v1/";
 }
 

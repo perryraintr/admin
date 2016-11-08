@@ -9,6 +9,8 @@ app.controller("admin_login", function($scope, $http) {
 			if (response.body.guid != undefined && response.body.guid > 0) {
 				localStorage.setItem("admin_login", response.body.phone);
 				location.href = "admin_raintr.html";
+			} else {
+				alert("账户或密码错误");
 			}
 		});	
 	}

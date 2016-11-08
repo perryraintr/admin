@@ -28,6 +28,14 @@ app.controller("admin_raintr", function($scope, $http, $sce) {
 	}];
 	
 	$scope.storelist = [{
+		"name": "店铺特色1",
+		"choose": false,
+		"href": "feature1.html"
+	},{
+		"name": "店铺特色2",
+		"choose": false,
+		"href": "feature2.html"
+	}, {
 		"name": "咖啡馆会员",
 		"choose": false,
 		"href": "merchant.html"
