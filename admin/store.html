@@ -32,7 +32,7 @@
 						<td class="success">咖啡馆余额</td>
 						<td class="success">slogan</td>
 						<td class="success">name</td>
-						<td class="success">提现账户</td>
+						<td class="success"><div style="width: 100px;"> 提现账户</div></td>
 						<td class="success">是否参与优惠活动（0: 有效，1:无效）</td>
 						<td class="success">是否下架咖啡馆 (0: 上架, 1: 下架)</td>
 						<td class="success">phone</td>
@@ -64,9 +64,7 @@
 						<td class="success">star</td>
 						<td class="success">activity</td>
 						<td class="success">comment</td>
-						<td class="success">
-							<div style="width: 800px;">description</div>
-						</td>
+						<td class="success">description</td>
 						<td class="success">create_time</td>
 						<td class="success">modify_time</td>
 					</tr>
@@ -86,24 +84,52 @@
 							<br />
 							<a href="store_modify.html?id={{row.guid}}" target="_blank">modifyImage</a>
 						</td>
-						<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="10" cols="20" readonly="readonly">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="guid{{$index}}" name="guid{{$index}}" rows="13" cols="20" readonly="readonly">{{row.guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 						<td><img ng-src="{{row.qrcodeUrl}}" width="100px" height="100px" /><input value="生成二维码" type="button" ng-click="qrcode(row)" /></td>
 						<td>
 							<img ng-src="http://interface.pinshe.org/v1/qrcode.a?url=http://www.pinshe.org/html/v1/coffee/qrcode_cafepay.html?sid={{row.guid}}" width="100px" height="100px" />
 						</td>
-						<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="10" cols="20">{{row.merchant_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="current{{$index}}" name="current{{$index}}" rows="10" cols="20">{{row.current}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="10" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="name{{$index}}" name="name{{$index}}" rows="10" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="payment{{$index}}" name="payment{{$index}}" rows="10" cols="20">{{row.payment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="invaild{{$index}}" name="invaild{{$index}}" rows="10" cols="20">{{row.invaild}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="delete{{$index}}" name="delete{{$index}}" rows="10" cols="20">{{row.is_delete}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="phone{{$index}}" name="phone{{$index}}" rows="10" cols="20">{{row.phone}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="address{{$index}}" name="address{{$index}}" rows="10" cols="20">{{row.address}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="longitude{{$index}}" name="longitude{{$index}}" rows="10" cols="20">{{row.longitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="latitude{{$index}}" name="latitude{{$index}}" rows="10" cols="20">{{row.latitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="wifi{{$index}}" name="wifi{{$index}}" rows="10" cols="20">{{row.wifi}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="wifipassword{{$index}}" name="wifipassword{{$index}}" rows="10" cols="20">{{row.wifi_password}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="mid{{$index}}" name="mid{{$index}}" rows="13" cols="20">{{row.merchant_guid}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="current{{$index}}" name="current{{$index}}" rows="13" cols="20">{{row.current}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="slogan{{$index}}" name="slogan{{$index}}" rows="13" cols="20">{{row.slogan}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="name{{$index}}" name="name{{$index}}" rows="13" cols="20">{{row.name}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td>
+							<!--<textarea id="payment{{$index}}" name="payment{{$index}}" rows="10" cols="20">{{row.payment}}</textarea>
+							<input type="button" value="modify" ng-click="modify($index);" />-->
+							<div>
+								<table border="1">
+									<tbody>
+									<tr>
+										<td>op</td>
+										<td>id</td>
+										<td>holder</td>
+										<td>account</td>
+										<td>company</td>
+										<td>type</td>
+									</tr>
+									</tbody>
+									<tbody>
+									<tr  ng-repeat="payment in row.payments" style="height: 50px;">
+										<td><a href="store_payment_modify.html?paymentid={{payment.guid}}&sid={{row.guid}}" target="_blank">modify</a></td>
+										<td>{{payment.guid}}</td>
+										<td>{{payment.holder}}</td>
+										<td>{{payment.account}}</td>
+										<td>{{payment.company}}</td>
+										<td>{{payment.type}}</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<a href="store_payment.html?sid={{row.guid}}" target="_blank">跳转编辑</a>
+						</td>
+						<td><textarea id="invaild{{$index}}" name="invaild{{$index}}" rows="13" cols="20">{{row.invaild}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="delete{{$index}}" name="delete{{$index}}" rows="13" cols="20">{{row.is_delete}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="phone{{$index}}" name="phone{{$index}}" rows="13" cols="20">{{row.phone}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="address{{$index}}" name="address{{$index}}" rows="13" cols="20">{{row.address}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="longitude{{$index}}" name="longitude{{$index}}" rows="13" cols="20">{{row.longitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="latitude{{$index}}" name="latitude{{$index}}" rows="13" cols="20">{{row.latitude}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="wifi{{$index}}" name="wifi{{$index}}" rows="13" cols="20">{{row.wifi}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="wifipassword{{$index}}" name="wifipassword{{$index}}" rows="13" cols="20">{{row.wifi_password}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 						<td><img ng-src="{{row.image}}" width="100" height="100" /></td>
 						<td><img ng-src="{{row.avatar}}" width="100" height="100" /></td>
 						<td>
@@ -115,24 +141,24 @@
 							</p>
 						</td>
 						<td>{{row.video}}</td>
-						<td><textarea id="date{{$index}}" name="date{{$index}}" rows="10" cols="20">{{row.date}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="owner{{$index}}" name="owner{{$index}}" rows="10" cols="20">{{row.owner}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="recommend{{$index}}" name="recommend{{$index}}" rows="10" cols="20">{{row.recommend}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="date{{$index}}" name="date{{$index}}" rows="13" cols="20">{{row.date}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="owner{{$index}}" name="owner{{$index}}" rows="13" cols="20">{{row.owner}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="recommend{{$index}}" name="recommend{{$index}}" rows="13" cols="20">{{row.recommend}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 						<td>
 							<div>填写例：91,92 (91:适合学习,92:无线网络,93:自制甜点,94:美酒佳酿,95:咖啡课程,96:内有萌宠,97:有书阅读,98:自烘咖啡,99:有停车位,100:欢迎宠物,101:适合商谈,102:值得拍照,103:简餐)</div>
-							<textarea id="feature1s{{$index}}" name="feature1s{{$index}}" rows="10" cols="100">{{row.feature1str}}</textarea>
+							<textarea id="feature1s{{$index}}" name="feature1s{{$index}}" rows="10" cols="88">{{row.feature1str}}</textarea>
 							<input type="button" value="modify" ng-click="modify($index);" />
 						</td>
 						<td>
 							<div>填写例：88,89 (88:V60,89:爱乐亚,90:摩卡壶,91:冰滴壶,92:chemex,93:法压壶,94:虹吸壶,95:意式)</div>
-							<textarea id="feature2s{{$index}}" name="feature2s{{$index}}" rows="10" cols="100">{{row.feature2str}}</textarea>
+							<textarea id="feature2s{{$index}}" name="feature2s{{$index}}" rows="10" cols="50">{{row.feature2str}}</textarea>
 							<input type="button" value="modify" ng-click="modify($index);" />
 						</td>
-						<td><textarea id="feature3{{$index}}" name="feature3{{$index}}" rows="10" cols="20">{{row.feature3}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="star{{$index}}" name="star{{$index}}" rows="10" cols="20">{{row.star}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="activity{{$index}}" name="activity{{$index}}" rows="10" cols="20">{{row.activity}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="comment{{$index}}" name="comment{{$index}}" rows="10" cols="20">{{row.comment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
-						<td><textarea id="description{{$index}}" name="description{{$index}}" rows="10" cols="400">{{row.description}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="feature3{{$index}}" name="feature3{{$index}}" rows="13" cols="20">{{row.feature3}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="star{{$index}}" name="star{{$index}}" rows="13" cols="20">{{row.star}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="activity{{$index}}" name="activity{{$index}}" rows="13" cols="20">{{row.activity}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="comment{{$index}}" name="comment{{$index}}" rows="13" cols="20">{{row.comment}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
+						<td><textarea id="description{{$index}}" name="description{{$index}}" rows="13" cols="50">{{row.description}}</textarea><input type="button" value="modify" ng-click="modify($index);" /></td>
 						<td>{{row.create_time}}</td>
 						<td>{{row.modify_time}}</td>
 					</tr>

@@ -36,7 +36,7 @@ app.controller('store_order', function($scope, $http) {
 
 		$scope.delete = function(id) {
 			if(confirm("are you sure remove it")) {
-				$http.get("http://interface.pinshe.org/v1/order_remove.a?id=" + id).success(function(response) {
+				$http.get(getHeadUrl() + "order_remove.a?id=" + id).success(function(response) {
 					window.location.reload();
 				});
 			}

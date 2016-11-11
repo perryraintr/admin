@@ -44,6 +44,7 @@ app.controller('store', function($scope, $http) {
 		var dateStr = document.getElementById("date" + index).value;
 		var owner = document.getElementById("owner" + index).value;
 		var slogan = document.getElementById("slogan" + index).value;
+		slogan = encodeURIComponent(slogan);
 		var recommend = document.getElementById("recommend" + index).value;
 		var feature1 = document.getElementById("feature1s" + index).value;
 		console.log(feature1);

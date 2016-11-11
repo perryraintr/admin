@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="admin" ng-controller="store_payment_add">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+</head>
+<body>
+	<form id="form_add" method="post" enctype="multipart/form-data">
+		<table>
+		<tbody>
+			<tr><td>sid</td><td><textarea id="sid" name="sid" rows="5" cols="80" readonly="readonly">{{sid}}</textarea></td></tr>
+			<tr><td>姓名</td><td><textarea id="holder" name="holder" rows="5" cols="80"></textarea></td></tr>
+			<tr><td>账号</td><td><textarea id="account" name="account" rows="5" cols="80"></textarea></td></tr>
+			<tr><td>开户行</td><td><textarea id="company" name="company" rows="5" cols="80">支付宝</textarea>注：账户为支付宝需写“支付宝”</td></tr>
+			<tr><td>账户类型</td><td><textarea id="type" name="type" rows="5" cols="80">0</textarea>0: 支付宝；1: 银行卡</td></tr>
+			<tr><td><input type="submit" value="add" ng-click="add()" /></td><td>{{json.guid}}</td></tr>
+		</tbody>
+		</table>
+	</form>
+</body>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="store_payment_add.js"></script>
+</html>
